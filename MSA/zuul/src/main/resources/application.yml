@@ -1,0 +1,31 @@
+server:
+  port: 8100
+  ssl:
+    enabled: true
+    key-store: keystore.p12
+    key-store-password: jaewoong
+    key-store-type: PKCS12
+    key-alias: bns-ssl
+
+zuul:
+  routes:
+    service-1:
+      path: /order/**
+      serviceId: service-1
+    service-2:
+      path: /user/**
+      serviceId: service-2
+    auth:
+      path: /auth/**
+      serviceId: auth
+
+spring:
+  application:
+    name: zuulServer
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

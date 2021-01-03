@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="tv" class="SamsungTV" init-method="initMethod" destroy-method="destroyMethod">-->
+<!--        <constructor-arg ref="apple"/>-->
+<!--        <constructor-arg value="2700000"/>-->
+<!--        <property name="speaker" ref="apple"/>-->
+<!--        <property name="price" value="2700000"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="sony" class="SonySpeaker"/>-->
+<!--    <bean id="apple" class="AppleSpeaker"/>-->
+
+    <bean id="collectionBean" class="CollectionBean">
+        <property name="addressList">
+<!--            <list>-->
+<!--                <value>Seoul Gangnam Yuksam</value>-->
+<!--                <value>Seoul Sungdong Hangdang</value>-->
+<!--            </list>-->
+<!--            <set value-type="java.lang.String">-->
+<!--                <value> Seoul Gangnam Yuksam </value>-->
+<!--                <value> Seoul Sungdong Sungsu </value>-->
+<!--                <value> Seoul Sungdong Sungsu </value>-->
+<!--            </set>-->
+            <map>
+                <entry>
+                    <key><value>고길동</value></key>
+                    <value>서울시 강남구 역삼동</value>
+                </entry>
+                <entry>
+                    <key><value>마이콜</value></key>
+                    <value>서울시 강서구 화곡동</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="GDG-AOP-Task:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/GDG_AOP_Task_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="GDG-AOP-Task/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="GDG-AOP-Task" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.8" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjtools:1.8.8" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.8" />
+          <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
+          <element id="library" level="project" name="Spring MVC-5.2.3.RELEASE" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans>
+    <bean id="beanService" class="com.aop.exam.main.BeanService"/>
+    <bean id="testService" class="com.aop.exam.main.TestAdvice"/>
+
+    <config>
+        <pointcut id="hiPointcut" expression="execution(* com.aop.exam.main.BeanService.hi())"/>
+
+        <aspect ref="testService">
+            <before method="beforeTest" pointcut-ref="hiPointcut"/>
+            <after method="afterTest" pointcut-ref="hiPointcut"/>
+        </aspect>
+    </config>
+</beans>

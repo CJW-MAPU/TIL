@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/aop"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- TODO : Bean 주입 -->
+    <beans:bean id="beforeAdvice" class="com.spring.task.beforeAdvice"/>
+    <beans:bean id="afterAdvice" class="com.spring.task.afterAdvice"/>
+    <beans:bean id="aroundAdvice" class="com.spring.task.aroundAdvice"/>
+    <beans:bean id="service" class="com.spring.task.Service"/>
+
+    <!-- TODO : AOP 설정 -->
+    <config>
+        <pointcut id="servicePointcut" expression="execution(* com.spring.task..Service.*Service(..))"/>
+        <pointcut id="secondServicePointcut" expression="execution(* com.spring.task..Service.secondService(..))"/>
+        <pointcut id="thirdServicePointcut" expression="execution(* com.spring.task..Service.thirdService(..))"/>
+
+        <aspect ref="beforeAdvice">
+            <before method="beforeMethod" pointcut-ref="servicePointcut"/>
+        </aspect>
+        <aspect ref="afterAdvice">
+            <after method="afterMethod" pointcut-ref="thirdServicePointcut"/>
+        </aspect>
+        <aspect ref="aroundAdvice">
+            <around method="aroundMethod" pointcut-ref="secondServicePointcut"/>
+        </aspect>
+    </config>
+
+</beans:beans>

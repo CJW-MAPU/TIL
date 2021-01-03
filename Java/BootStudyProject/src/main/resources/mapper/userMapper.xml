@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//dtd Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.model.repository">
+    <select id="loginCheck" resultType="string">
+<!--        @Select("SELECT EXISTS (SELECT * FROM USERS WHERE username=#{username} AND password=#{password}) AS SUCCESS")-->
+        SELECT username
+        FROM users
+    </select>
+</mapper>

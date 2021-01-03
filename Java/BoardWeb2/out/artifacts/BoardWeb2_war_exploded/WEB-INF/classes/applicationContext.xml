@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+    <context:component-scan base-package="com.springbook.biz"/>
+
+    <aop:aspectj-autoproxy/>
+
+    <!-- DataSource 설정 -->
+    <context:property-placeholder location="classpath:config/database.properties"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- Spring JDBC 설정 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="execution(* com.springbook.biz..*(..))"/>
+        <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+
+
+
+<!--    <bean id="before" class="com.springbook.biz.common.BeforeAdvice"/>-->
+<!--    <bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"/>-->
+<!--    <bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"/>-->
+<!--    <bean id="after" class="com.springbook.biz.common.AfterAdvice"/>-->
+<!--    <bean id="around" class="com.springbook.biz.common.AroundAdvice"/>-->
+
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))"/>-->
+<!--        <aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))"/>-->
+
+
+
+<!--        <aop:aspect ref="before">-->
+<!--            <aop:before pointcut-ref="allPointcut" method="beforeLog"/>-->
+<!--        </aop:aspect>-->
+<!--        <aop:aspect ref="afterReturning">-->
+<!--            <aop:after-returning pointcut-ref="getPointcut" method="afterLog" returning="returnObj"/>-->
+<!--        </aop:aspect>-->
+<!--        <aop:aspect ref="afterThrowing">-->
+<!--            <aop:after-throwing pointcut-ref="allPointcut" method="exceptionLog" throwing="exceptObj"/>-->
+<!--        </aop:aspect>-->
+<!--        <aop:aspect ref="after">-->
+<!--            <aop:after pointcut-ref="allPointcut" method="finallyLog"/>-->
+<!--        </aop:aspect>-->
+<!--        <aop:aspect ref="around">-->
+<!--            <aop:around pointcut-ref="allPointcut" method="aroundLog"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+
+
+<!--    <bean id="log" class="com.springbook.biz.common.LogAdvice"/>-->
+<!--    <bean id="logAfter" class="com.springbook.biz.common.LogAdviceAfter"/>-->
+
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))"/>-->
+<!--        <aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))"/>-->
+
+<!--        <aop:aspect ref="log">-->
+<!--           <aop:before pointcut-ref="allPointcut" method="printLog"/>-->
+<!--            <aop:before pointcut-ref="getPointcut" method="printLog"/>-->
+<!--        </aop:aspect>-->
+<!--        <aop:aspect ref="logAfter">-->
+<!--            <aop:after pointcut-ref="getPointcut" method="printLogAfter"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+    <!--
+    <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO"/>
+    -->
+</beans>

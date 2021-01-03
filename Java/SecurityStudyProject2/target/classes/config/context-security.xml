@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+
+    <sec:http auto-config="true">
+        <sec:intercept-url pattern="/member/**" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
+        <sec:intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER', 'ROLE_MEMBER', 'ROLE_ADMIN')"/>
+        <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <sec:intercept-url pattern="/**" access="permitAll()"/>
+
+        <sec:form-login
+            username-parameter="loginId"
+            password-parameter="loginPwd"
+            login-processing-url="/login"
+            login-page="/secu/loginPage"
+            default-target-url="/"
+        />
+
+        <sec:access-denied-handler
+            error-page="/access_denied_page"
+        />
+
+        <sec:logout
+            logout-url="/logout"
+            logout-success-url="/"
+        />
+    </sec:http>
+
+
+    <sec:authentication-manager>
+        <sec:authentication-provider ref="userAuthProvider"/>
+        <sec:authentication-provider user-service-ref="userService"/>
+    </sec:authentication-manager>
+
+    <bean id="userService" class="com.spring.service.UserService"/>
+    <bean id="userAuthProvider" class="com.spring.service.AuthenticationProvider"/>
+</beans>
