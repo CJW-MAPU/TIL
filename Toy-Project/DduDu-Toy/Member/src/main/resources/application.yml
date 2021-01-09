@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: member-server
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ddudu_member?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&autoReconnection=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
