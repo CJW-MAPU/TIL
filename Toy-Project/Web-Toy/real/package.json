@@ -1,0 +1,31 @@
+{
+  "name": "real",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "storybook": "start-storybook -s ./public -p 9001",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@types/node": "^14.14.20",
+    "next": "10.0.5",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "styled-breakpoints": "^9.0.8",
+    "styled-components": "^5.2.1",
+    "styled-reset": "^4.3.4",
+    "styled-tools": "^1.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.12",
+    "@storybook/addon-essentials": "^6.1.12",
+    "@storybook/addon-links": "^6.1.12",
+    "@storybook/addon-viewport": "^6.1.12",
+    "@storybook/react": "^6.1.12",
+    "babel-loader": "^8.2.2"
+  }
+}
