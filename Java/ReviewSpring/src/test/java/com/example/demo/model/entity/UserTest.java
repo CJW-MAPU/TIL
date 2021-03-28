@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
 class UserTest {
-
     private static ModelMapper modelMapper;
 
     @BeforeAll
@@ -17,7 +16,7 @@ class UserTest {
     }
 
     @Test
-    @DisplayName("User DTO 와 User Entity 간 Model Mapper 테스트")
+    @DisplayName("User DTO 의 올바른 User Entity 변환 테스트")
     public void testModelMapperForUserDtoToUserEntity() {
         UserDto userDto = givenUsernameAndPassword("testUsername", "testPassword");
 

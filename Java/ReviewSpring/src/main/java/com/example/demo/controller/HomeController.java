@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
     @PostMapping("/ping")
-    public String test() {
+    public String home() {
         return "pong";
     }
 }
