@@ -17,7 +17,7 @@ class UserTest {
 
     @Test
     @DisplayName("User DTO 의 올바른 User Entity 변환 테스트")
-    public void testModelMapperForUserDtoToUserEntity() {
+    void testModelMapperForUserDtoToUserEntity() {
         UserDto userDto = givenUsernameAndPassword("testUsername", "testPassword");
 
         User user = whenUserDtoToUserEntityAsModelMapper(userDto);
