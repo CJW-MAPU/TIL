@@ -1,0 +1,41 @@
+server:
+  port: 8100
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: api-gateway-1
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://user-service-1
+          predicates:
+            - Path=/user/**
+          filters:
+            - RewritePath=/user/(?<path>.*), /$\{path}
+#            - name: Retry
+#              args:
+#                retries: 3
+#                statuses: INTERNAL_SERVER_ERROR
+#                methods: GET, POST
+#            - name: UserRouteFilter
+#              args:
+#                baseMessage: My Custom Message
+#                preLogger: true
+#                postLogger: true
+        - id: auth-service
+          uri: lb://auth-service-1
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<path>.*), /$\{path}
