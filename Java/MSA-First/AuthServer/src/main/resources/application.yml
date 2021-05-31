@@ -3,7 +3,12 @@ server:
 
 spring:
   application:
-    name: auth-service-1
+    name: auth-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/MsaAuth?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&autoReconnection=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 eureka:
   client:
@@ -11,12 +16,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
-
-security:
-  oauth2:
-    client:
-      client-id: auth_id
-      client-secret: auth-secret
-    resource:
-      jwt:
-        key-value: jwt_secret_key

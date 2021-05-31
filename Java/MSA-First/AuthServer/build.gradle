@@ -24,12 +24,17 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
-
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-security', version: '2.2.5.RELEASE'
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-oauth2', version: '2.2.5.RELEASE'
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.0'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
 
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    implementation group: 'mysql', name: 'mysql-connector-java'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

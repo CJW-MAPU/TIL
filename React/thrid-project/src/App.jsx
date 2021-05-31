@@ -1,13 +1,11 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import { testCors, Button } from './components/testCors';
 import { TodoProvider } from './components/TodoContext';
 import TodoCreate from './components/TodoCreate';
 import TodoHead from './components/TodoHead';
 import TodoList from './components/TodoList';
 import TodoTemplate from './components/TodoTemplate';
-import SecondSection from './components/section2';
-import FirstSection from './components/section1';
-import ThirdSection from './components/section3';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,19 +15,16 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
   return (
-    // <TodoProvider>
-    //   <GlobalStyle/>
-    //   <TodoTemplate>
-    //     <TodoHead/>
-    //     <TodoList/>
-    //     <TodoCreate/>
-    //   </TodoTemplate>
-    // </TodoProvider>
-    <>
-      <FirstSection />
-      <SecondSection />
-      <ThirdSection />
-    </>
+    <TodoProvider>
+      <GlobalStyle/>
+      <TodoTemplate>
+        {/* <TodoHead/>
+        <TodoList/>
+        <TodoCreate/> */}
+        <Button onClick={testCors}>
+        </Button>
+      </TodoTemplate>
+    </TodoProvider>
   );
 };
 

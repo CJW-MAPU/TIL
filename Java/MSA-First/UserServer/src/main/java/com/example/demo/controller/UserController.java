@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.dto.UserDto;
+import com.example.demo.model.dto.UserRequestData;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +15,8 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public UserDto signUp(UserDto request) {
-        return userService.signUp(request.toEntity());
+    public UserRequestData signUp(UserRequestData requestData) {
+        return userService.signUp(requestData);
     }
 
     @PostMapping("/ping")

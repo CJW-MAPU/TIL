@@ -1,27 +1,30 @@
 package com.example.demo.service;
 
-import com.example.demo.model.dto.UserDto;
+import com.example.demo.exception.UsernameDuplicatedException;
+import com.example.demo.model.dto.UserRequestData;
 import com.example.demo.model.entity.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.util.UserUtil;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserUtil userUtil;
+    private final ModelMapper modelMapper;
 
-    public UserService(UserRepository userRepository, UserUtil userUtil) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
-        this.userUtil = userUtil;
+        this.modelMapper = modelMapper;
     }
 
-    public UserDto signUp(User user) {
-        if (!isAlreadyRegisteredMembership(user.getUsername())) {
-            return userUtil.convertEntityToDto(userRepository.save(user));
+    public UserRequestData signUp(UserRequestData requestData) throws UsernameDuplicatedException {
+        if (!isAlreadyRegisteredMembership(requestData.getUsername())) {
+            User user = modelMapper.map(requestData, User.class);
+
+            return modelMapper.map(userRepository.save(user), UserRequestData.class);
         } else {
-            return userUtil.convertEntityToDto(user);
+            throw new UsernameDuplicatedException();
         }
     }
 

@@ -8,15 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDto {
+public class UserRequestData {
 
     private String username;
     private String password;
-
-    public User toEntity() {
-        return User.builder()
-                .username(username)
-                .password(password)
-                .build();
-    }
 }

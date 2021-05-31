@@ -1,14 +1,14 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
+  application:
+    name: user-service
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/MsaUser?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&autoReconnection=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-  application:
-    name: user-service-1
 
 eureka:
   client:
