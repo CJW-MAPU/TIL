@@ -7,9 +7,12 @@ import com.example.oauth.model.dto.JwtRequestData;
 import com.example.oauth.model.dto.JwtResponseData;
 import com.example.oauth.model.dto.OAuthRequestData;
 import com.example.oauth.model.dto.OAuthResponseData;
+import com.example.oauth.model.entity.Token;
 import com.example.oauth.model.vo.TokenData;
 import com.example.oauth.repository.TokenRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class TokenService {
@@ -34,13 +37,41 @@ public class TokenService {
                 .email(tokenData.getEmail())
                 .build();
 
-        JwtResponseData jwtResponseData = userServiceClient.getJwt(jwtRequestData);
+        Optional<Token> token = tokenRepository.findByTokenIdAndType(tokenData.getTokenId(), String.valueOf(type));
 
-//        Optional<Token> token = tokenRepository.findByTokenIdAndType(tokenData.getTokenId(), String.valueOf(type));
+        var context = new Object() {
+            JwtResponseData jwtResponseData;
+        };
+
+        token.ifPresentOrElse(item -> {
+            context.jwtResponseData = userServiceClient.login(item.getUUID());
+
+            item.setAccessToken(tokenData.getAccessToken());
+            item.setRefreshToken(tokenData.getRefreshToken());
+
+            tokenRepository.save(item);
+        }, () -> {
+            context.jwtResponseData = userServiceClient.register(jwtRequestData);
+
+            Token item = tokenBuilder(tokenData, context.jwtResponseData, String.valueOf(type));
+
+            tokenRepository.save(item);
+
+        });
 
         return OAuthResponseData.builder()
-                .jwtAccessToken(jwtResponseData.getJwtAccessToken())
-                .jwtRefreshToken(jwtResponseData.getJwtRefreshToken())
+                .jwtAccessToken(context.jwtResponseData.getJwtAccessToken())
+                .jwtRefreshToken(context.jwtResponseData.getJwtRefreshToken())
+                .build();
+    }
+
+    private Token tokenBuilder(TokenData tokenData, JwtResponseData jwtResponseData, String type) {
+        return Token.builder()
+                .tokenId(tokenData.getTokenId())
+                .UUID(jwtResponseData.getUUID())
+                .type(String.valueOf(type))
+                .accessToken(tokenData.getAccessToken())
+                .refreshToken(tokenData.getRefreshToken())
                 .build();
     }
 }

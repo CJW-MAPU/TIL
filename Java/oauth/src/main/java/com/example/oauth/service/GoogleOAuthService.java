@@ -52,10 +52,5 @@ public class GoogleOAuthService implements OAuthService {
                 .name(profileResponseData.getName())
                 .email(profileResponseData.getEmail())
                 .build();
-
-        /*return JwtRequestData.builder()
-                .nickname(profileResponseData.getName())
-                .email(profileResponseData.getEmail())
-                .build();*/
     }
 }

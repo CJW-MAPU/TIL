@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class JwtResponseData {
-    private Long UUID;
+    private String UUID;
     private String jwtAccessToken;
     private String jwtRefreshToken;
 }

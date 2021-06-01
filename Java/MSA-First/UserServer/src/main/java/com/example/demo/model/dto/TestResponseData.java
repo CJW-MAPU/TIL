@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestResponseData {
-    private Long UUID;
+    private String UUID;
     private String jwtAccessToken;
     private String jwtRefreshToken;
 }

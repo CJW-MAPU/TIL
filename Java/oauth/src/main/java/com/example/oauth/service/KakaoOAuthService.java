@@ -51,10 +51,5 @@ public class KakaoOAuthService implements OAuthService {
                 .name((String) profileResponseData.getProperties().get("nickname"))
                 .email((String) profileResponseData.getKakao_account().get("email"))
                 .build();
-
-        /*return JwtRequestData.builder()
-                .nickname((String) profileResponseData.getProperties().get("nickname"))
-                .email((String) profileResponseData.getKakao_account().get("email"))
-                .build();*/
     }
 }

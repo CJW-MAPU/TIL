@@ -14,7 +14,7 @@ public class Token {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long UUID;
+    private String UUID;
     private String type;
     private String tokenId;
     private String accessToken;

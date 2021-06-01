@@ -51,10 +51,5 @@ public class NaverOAuthService implements OAuthService {
                 .email((String) profileResponseData.getResponse().get("email"))
                 .name((String) profileResponseData.getResponse().get("name"))
                 .build();
-
-        /*return JwtRequestData.builder()
-                .nickname((String) profileResponseData.getResponse().get("name"))
-                .email((String) profileResponseData.getResponse().get("email"))
-                .build();*/
     }
 }
