@@ -32,6 +32,7 @@ dependencies {
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.0'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     compileOnly 'org.projectlombok:lombok'

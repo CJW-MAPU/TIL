@@ -3,7 +3,7 @@ package com.example.oauth.model.dto.kakao;
 import lombok.*;
 
 @Getter
-@Setter
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

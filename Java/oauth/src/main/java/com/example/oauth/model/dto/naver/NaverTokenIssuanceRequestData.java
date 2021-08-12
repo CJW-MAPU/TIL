@@ -3,7 +3,6 @@ package com.example.oauth.model.dto.naver;
 import lombok.*;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
