@@ -18,6 +18,8 @@ fun forLoop() {
     println("[for] 반복문")
     val items = listOf("apple", "banana", "kiwi")
 
+    /* NOTE : val 은 재할당 불가 |  var 은 재할당 가능 */
+
     for (item in items) {
         println(item)
     }

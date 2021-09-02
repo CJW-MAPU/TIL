@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: kotlin-server
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+
+  datasource:
+    driver-class-name:
