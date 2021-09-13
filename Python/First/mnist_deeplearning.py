@@ -3,7 +3,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.datasets import mnist
-from tensorflow.python.client import device_lib
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import confusion_matrix, accuracy_score
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -18,6 +19,15 @@ if __name__ == '__main__':
 
         X_train /= 255
         X_test /= 255
+
+        # model = MultinomialNB()
+        #
+        # model.fit(X_train, y_train)
+        #
+        # predict = model.predict(X_test)
+        #
+        # print(confusion_matrix(y_test, predict))
+        # print(accuracy_score(y_test, predict))
 
         print(X_train.shape)
         print(X_test.shape)
@@ -45,6 +55,7 @@ if __name__ == '__main__':
         print('Test accuracy:', score[1])
 
         predicted_classes = np.argmax(model.predict(X_test), axis = 1)
+        print(predicted_classes)
         correct_indices = np.nonzero(predicted_classes == y_test)[0]
         incorrect_indices = np.nonzero(predicted_classes != y_test)[0]
 
