@@ -29,7 +29,7 @@ def main():
     svm.fit(X_xor, y_xor)
     plot_decision_regions(X_xor, y_xor, classifier = svm)
 
-    plt.legend(loc = 'upper left')
+    plt.legend(loc = 'upper left')s
     plt.tight_layout()
     plt.show()
 

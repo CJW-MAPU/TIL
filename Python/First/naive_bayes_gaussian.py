@@ -7,6 +7,8 @@ from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_sc
 
 def main():
     dataset = load_wine()
+
+    print(dataset['feature_names'])
     x_train, x_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'])
 
     model = GaussianNB()
