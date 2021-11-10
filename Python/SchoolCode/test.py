@@ -11,10 +11,11 @@ books = [
 # all_pages = sum([book['페이지 수'] for book in books])
 # pub_company = set([book['출판사'] for book in books])
 
-many_page = []
-recommands = []
+many_page = list()
+recommands = list()
 all_pages = 0
 pub_company = set()
+test = dict()
 
 print('전체 책 목록')
 for book in books:

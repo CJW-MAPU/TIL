@@ -1,0 +1,12 @@
+email = input('메일 : ')
+name = input('이름: ')
+username = input('아이디: ')
+password = input('비밀번호: ')
+
+print(f'To. {email}')
+print(f'{name} 고객님 안녕하세요.')
+print(f'{name} 고객님의 아이디와 비밀번호 확인 요청에 응답드립니다.')
+print(f'{name} 고객님의 아이디와 비밀번호는 \n')
+print(f'아이디: {username}')
+print(f'비밀번호: {password}\n')
+print('입니다.')
