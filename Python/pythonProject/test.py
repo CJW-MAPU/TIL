@@ -12,11 +12,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score, f1_score
 
-# F5C158
+# 82E3C3
 
 
 # TODO : 학습 해보기
-# dataset = read_csv('after/labeled_dataset.csv')
+# dataset = read_csv('after/labeled_dataset.csv.csv')
 # dataset = dataset.drop(['actor', 'actor_account'], axis = 'columns')
 #
 # x = dataset.iloc[:, :-1]
@@ -25,8 +25,8 @@ from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, prec
 # X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state = 1)
 #
 # pipeline = make_pipeline(
-#     # LogisticRegression(C = 0.1, random_state = 1)
-#     SVC(C = 0.1, kernel = 'linear', random_state  = 1)
+#     LogisticRegression(C = 0.1, random_state = 1)
+#     # SVC(C = 0.1, kernel = 'linear', random_state = 1)
 # )
 #
 # pipeline.fit(X_train, y_train)
@@ -38,24 +38,6 @@ from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, prec
 # print(f'recall : {recall_score(y_test, predict)}')
 # print(f'precision : {precision_score(y_test, predict)}')
 # print(f'f1-score : {f1_score(y_test, predict)}')
-
-
-# @TODO : harvest_count 로그 추출
-# 이거 코드 Refactoring 하고, 주석 다시 달기.
-# for i in range(1, 8):
-#     harvest_count_csv = read_csv('after/harvest_count.csv')  # 각 캐릭터 별 채집 횟수를 저장할 파일 불러오기.
-#     log_str = f'{i}.csv'
-#     data = read_csv(log_str)  # 2010. 04. 16 ~ 2010. 04. 22 기간의 로그 불러오기.
-#     get_harvest_count(target = harvest_count_csv, data = data)  # 채집 시도(성공 및 실패) 횟수를 불러올 모듈 호출.
-#     print(f'#{i} 번쨰 반복')
-
-# @TODO : make userlist.csv
-# 이거 코드 Refactoring 하고, 주석 달기.
-# for i in range(1, 8):
-#     user_list = read_csv('after/userlist_2.csv')
-#     log_str = f'dataset/{i}.csv'
-#     data = read_csv(log_str)
-#     make_user_list(target = user_list, data = data)
 
 
 # TODO : make Dataset
@@ -71,7 +53,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, prec
 # columns.append('label')
 #
 # user_csv = read_csv('after/userlist.csv')  # 유저 리스트 불러오기.
-# log = read_csv('after/harvest_log_7days.csv')  # 7일간의 로그 불러오기.
+# log = read_csv('after/harvest_log_7days.csv')  # 7일간의 채집 로그 불러오기.
 # labels = read_csv('dataset/labeled_accounts.csv')  # 각 유저 별 라벨링 된 봇/휴먼 여부 불러오기.
 #
 # dataframe = pandas.DataFrame(columns = columns)  # 생성한 Column 명을 토대로 DataFrame 생성.
@@ -102,10 +84,9 @@ from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, prec
 #     dataframe = pandas.concat([dataframe, temp])  # 미리 생성한 최종 DataFrame 에 결합.
 #     print(len(dataframe.index))
 #
-#
 # dataframe.to_csv('./after/dataset.csv', sep = ',', index = False)  # 완성된 DataFrame 저장.
 
-# @TODO : 차원 축소
+# TODO : 차원 축소
 # data = read_csv('after/dataset.csv')  # 제작한 데이터셋 불러오기.
 # print(f'Initial Column Count : {len(data.columns)}')
 # n = 2
@@ -140,8 +121,8 @@ from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, prec
 #
 # data.to_csv('./after/harvest_log_7days.csv', sep = ',', index = False)
 
-# TODO : 당연히 Refactoring 해야 하는 코드.
-# harvest_count.csv 를 직접 확인하여 많은 횟수 채집을 진행한 Player Character 를
+
+# harvest_count_2.csv 를 직접 확인하여 많은 횟수 채집을 진행한 Player Character 를
 # bot/human/none 으로 나누어 좌표 데이터를 각각 추출하여 저장함.
 # for i in range(1, 5):
 #     # human_dataset = read_csv('after/human3.csv')
@@ -191,27 +172,27 @@ from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, prec
 # TODO : 20099637 - 815963 None
 
 # 분석을 위해 추출한 샘플 데이터의 좌표 데이터를 3차원 산점도 그래프로 Plot 하고, svg 로 저장.
-# human = read_csv('after/human3.csv')
-# bot = read_csv('after/bot2.csv')
-none = read_csv('after/none2.csv')
-
-fig = plt.figure(figsize = (10, 10))
-ax = fig.gca(projection = '3d')
-
-for i in range(len(none)):
-    x = none.iloc[i, 1]
-    y = none.iloc[i, 2]
-    z = none.iloc[i, 3]
-
-    ax.scatter(x, y, z)
-    print(f'#{i}')
-
-ax.set_xlabel('location_x')
-ax.set_ylabel('location_y')
-ax.set_zlabel('location_z')
-plt.title('815963 - None')
-plt.savefig('None-815963.svg')
-plt.show()
+# # human = read_csv('after/human3.csv')
+# # bot = read_csv('after/bot2.csv')
+# none = read_csv('after/none2.csv')
+#
+# fig = plt.figure(figsize = (10, 10))
+# ax = fig.gca(projection = '3d')
+#
+# for i in range(len(none)):
+#     x = none.iloc[i, 1]
+#     y = none.iloc[i, 2]
+#     z = none.iloc[i, 3]
+#
+#     ax.scatter(x, y, z)
+#     print(f'#{i}')
+#
+# ax.set_xlabel('location_x')
+# ax.set_ylabel('location_y')
+# ax.set_zlabel('location_z')
+# plt.title('815963 - None')
+# plt.savefig('None-815963.svg')
+# plt.show()
 
 
 
