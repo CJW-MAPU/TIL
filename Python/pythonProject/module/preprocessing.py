@@ -25,6 +25,8 @@ def make_columns() -> list:
     columns = list()
     columns.append('actor')
     columns.append('actor_account')
+    columns.append('playtime')
+    columns.append('harvest_count')
     for z in range(0, 32):
         for y in range(0, 36):
             for x in range(0, 37):
@@ -46,9 +48,9 @@ def divide_graph(data: DataFrame) -> np.ndarray:
     # for 구문 : 채집 로그의 좌표 데이터를 임의의 값으로 나누어 구별하고, 해당 범위 내에 몇 번의 로그가 발생하였는지 기록.
     for i in range(0, len(data)):
         temp = data.iloc[i, :]
-        x = temp['location_x'] // 100
-        y = temp['location_y'] // 100
-        z = temp['location_z'] // 100
+        x = int(temp['location_x'] // 100)
+        y = int(temp['location_y'] // 100)
+        z = int(temp['location_z'] // 100)
         harvest_array[z][y][x] += 1
 
     harvest_array = harvest_array.reshape(-1,)  # 완성된 3차원 배열을 1차원으로 Reshape

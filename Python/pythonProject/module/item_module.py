@@ -15,3 +15,17 @@ def get_harvest_count(log: DataFrame, path: str) -> None:
 
     data.to_csv(path, sep = ',', index = False)
 
+
+def get_playtime(log: DataFrame, path: str) -> None:
+    """
+    :param log: 플레이타임을 추출하기 위한 원시 로그 데이터.
+    :param path: 추출한 플레이타임을 저장하기 위한 경로.
+    :return None:
+    """
+
+    feature = log[['actor', 'etc_num7']]
+    data = feature.groupby(by = ['actor'], as_index = False).max()
+    data.rename(columns = {'etc_num7': 'playtime'}, inplace = True)
+
+    data.to_csv(path, sep = ',', index = False)
+
