@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0cc98c05-82ef-4207-8724-b3086f69f108" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../Java/spring-cloud-workshop" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java/spring-cloud-workshop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigdataLecture/.idea/BigdataLecture.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../BigdataLecture/.idea/BigdataLecture.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigdataLecture/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BigdataLecture/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BigdataLecture/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BigdataLecture/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +66,7 @@
       <recent name="$PROJECT_DIR$/dataset" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main2">
+  <component name="RunManager" selected="Python.main">
     <configuration name="item_module" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,7 +89,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pythonProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -211,6 +215,7 @@
       <workItem from="1641050132671" duration="59666000" />
       <workItem from="1641979925489" duration="34085000" />
       <workItem from="1642586154254" duration="69031000" />
+      <workItem from="1653527405197" duration="37000" />
     </task>
     <servers />
   </component>
@@ -228,6 +233,17 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pythonProject$item_module.coverage" NAME="item_module Coverage Results" MODIFIED="1639142803578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module" />
