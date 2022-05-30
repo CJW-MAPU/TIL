@@ -19,7 +19,6 @@ def is_subsequence(s, t):
 
 
 if __name__ == '__main__':
-    # @todo : len = 60 , min = 39
     f = open('dataset/MT745584.txt')
 
     items = ['A', 'C', 'G', 'T']
