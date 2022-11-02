@@ -1,37 +1,49 @@
 package main
 
 import (
-	"FirstProject/utils"
 	"fmt"
+	"math"
 )
 
+type Shape interface {
+	area() float64
+	perimeter() float64
+}
+
+type Rects struct {
+	width, height float64
+}
+
+func (r Rects) area() float64 {
+	return r.width * r.height
+}
+
+func (r Rects) perimeter() float64 {
+	return 2 * (r.width + r.height)
+}
+
+type Circles struct {
+	radius float64
+}
+
+func (c Circles) area() float64 {
+	return math.Pi * c.radius * c.radius
+}
+
+func (c Circles) perimeter() float64 {
+	return 2 * math.Pi * c.radius
+}
+
 func main() {
-	source := []int{0, 1, 2}
-	target := make([]int, len(source), cap(source)*2)
-	copy(target, source)
-	fmt.Println(len(source), cap(source))
-	fmt.Println(target)
-	fmt.Println(len(target), cap(target))
+	r := Rects{10., 20.}
+	c := Circles{10}
 
-	tickers := map[string]string{
-		"GG": "Google",
-		"MS": "Microsoft",
-		"FB": "Facebook",
+	showArea(r, c)
+}
+
+func showArea(shapes ...Shape) {
+	for _, s := range shapes {
+		a := s.area()
+		fmt.Println(a)
 	}
-
-	fmt.Println(tickers["GG"])
-
-	value, exists := tickers["MSS"]
-	if exists {
-		fmt.Println(value)
-	} else {
-		fmt.Println("Key Exception")
-	}
-
-	for key, val := range tickers {
-		fmt.Println(key, val)
-	}
-	song := utils.GetMusic("John Legend")
-
-	fmt.Println(song)
 }
